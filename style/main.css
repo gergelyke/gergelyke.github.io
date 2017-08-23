@@ -3,16 +3,16 @@ html {
   font-weight: 300;
 }
 
-h1 {
+h1, h2, h3, h4, h5, p, span {
   font-weight: 100;
 }
 
-h3 {
-  font-weight: 100;
+h4 {
+  font-size: 1.2em;
 }
 
-p {
-  font-weight: 100;
+h5 {
+  font-size: 1.0em;
 }
 
 a {
@@ -29,11 +29,31 @@ a {
 
 #container {
   max-width: 400px;
-  text-align: center;
   margin: 0 auto;
   padding: 1em;
 }
 
 .img-rounded {
   border-radius: 100px;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.bottom-border-line {
+  padding-bottom: 2em;
+  border-bottom: 1px solid #ddd;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.spacing-bottom-0 {
+  margin-bottom: 0.2em;
 }
