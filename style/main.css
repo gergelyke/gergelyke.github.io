@@ -3,7 +3,7 @@ html {
   font-weight: 300;
 }
 
-h1, h2, h3, h4, h5, p, span {
+h1, h2, h3, h4, h5, p, span, a {
   font-weight: 100;
 }
 
@@ -17,6 +17,15 @@ h5 {
 
 a {
   color: black;
+}
+
+nav {
+  padding: 1em;
+  background: #f2f2f2;
+}
+
+nav a {
+  margin-left: 1.0em;
 }
 
 #social-icons {
