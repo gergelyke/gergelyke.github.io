@@ -1,10 +1,15 @@
 html {
   font-family: 'Rokkitt', serif;
   font-weight: 300;
+  font-size: 1.1em;
 }
 
 h1, h2, h3, h4, h5, p, span, a {
   font-weight: 100;
+}
+
+h3 {
+  font-size: 1.4em;
 }
 
 h4 {
@@ -17,6 +22,10 @@ h5 {
 
 a {
   color: black;
+}
+
+p {
+  font-size: 0.9em;
 }
 
 nav {
