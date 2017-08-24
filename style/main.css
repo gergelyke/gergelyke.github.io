@@ -51,6 +51,12 @@ nav a {
   padding: 1em;
 }
 
+.button {
+  text-decoration: none;
+  padding: 0.25em 0.5em;
+  background-color: #eee;
+}
+
 .img-rounded {
   border-radius: 100px;
 }
