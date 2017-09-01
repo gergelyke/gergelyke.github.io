@@ -103,3 +103,16 @@ nav a {
   padding-bottom: 0.5em;
   border-bottom: 1px solid #eee;
 }
+
+.header-with-image {
+  margin-bottom: 1em;
+}
+
+.header-with-image h4 {
+  display: inline-block;
+}
+
+.header-with-image img {
+  vertical-align: middle;
+  margin-right: 0.5em;
+}
