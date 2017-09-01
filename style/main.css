@@ -97,6 +97,10 @@ nav a {
   margin-top: 0.2em;
 }
 
+.spacing-top-1 {
+  margin-top: 1em;
+}
+
 .rows > div {
   padding: 0.1em 0.25em;
   margin-bottom: 0.5em;
