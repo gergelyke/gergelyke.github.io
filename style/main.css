@@ -120,3 +120,7 @@ nav a {
   vertical-align: middle;
   margin-right: 0.5em;
 }
+
+.full-width {
+  width: 100%;
+}
