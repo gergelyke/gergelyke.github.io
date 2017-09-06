@@ -16,6 +16,11 @@ h4 {
   font-size: 1.2em;
 }
 
+h4.divider {
+  background: #eee;
+  padding: 0.5em;
+}
+
 h5 {
   font-size: 1.0em;
 }
@@ -123,4 +128,8 @@ nav a {
 
 .full-width {
   width: 100%;
+}
+
+.small {
+  font-size: 0.75em;
 }
