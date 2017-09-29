@@ -5,6 +5,12 @@ date: 2017-09-26 17:53:04
 
 # Public speaking
 
+## Coming up
+
+### Node.js Production Checklist
+
+*Tokyo, Japan - 25-26 November, 2017*
+
 ## Security - Panel discussion as a panelist
 
 *NodeSummit, San Francisco - 2017 July*
