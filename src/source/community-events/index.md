@@ -1,5 +1,6 @@
 ---
-title: Community events
+title: Gergely Nemeth | Community events
+description: Conferences and meetups organized and co-organized by Gergely
 date: 2017-09-26 17:53:19
 ---
 

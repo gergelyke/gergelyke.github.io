@@ -1,5 +1,6 @@
 ---
-title: Publications
+title: Gergely Nemeth | Publications
+description: Gergely's publications on the RisingStack, Synk and the Loggly blog
 date: 2017-09-26 17:53:27
 ---
 

@@ -1,5 +1,6 @@
 ---
-title: Public speaking
+title: Gergely Nemeth | Public speaking
+description: Gergely's public speaking appearances
 date: 2017-09-26 17:53:04
 ---
 
