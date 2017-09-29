@@ -5,6 +5,8 @@ date: 2017-09-26 17:53:04
 
 # Public speaking
 
+*Would like me to speak at your conference? Just [send me a DM](https://twitter.com/nthgergo) on twitter! 🚀*
+
 ## Coming up
 
 ### Node.js Production Checklist
