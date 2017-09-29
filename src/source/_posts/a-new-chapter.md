@@ -9,6 +9,4 @@ However, for me, this day marks the end of an era and the start of a new chapter
 
 **What's next for me?** I’m very excited to share that I’m joining the team of GoDaddy, and Monday is my first day! If you liked [my articles on the RisingStack blog](https://blog.risingstack.com/author/gergely/), I have good news! 😊 They will keep coming, but from now on you will find them here, on nemethgergely.com. I plan to write on Node.js, security, and anything that grabs my attention.
 
-If you'd ever like to grab a ☕️ or 🍺 with me, I'll be mostly here, in San Francisco, except when I’m traveling around the globe to speak, learn, and hang out with fellow JavaScript enthusiasts. Like [Nodefest](http://nodefest.jp) in Tokyo this November, where I’m giving a talk about what you need to make sure before going into production with Node.js. Hope to see you there! 
-
 Anyway, you can always [find me on Twitter](https://twitter.com/nthgergo), DMs are open and very welcome!
