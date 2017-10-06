@@ -9,6 +9,7 @@
         },
         dataType: 'json',
         success: function(comments) {
+          console.log(comments  )
           const $commentSection = $('.blog-post-comments')
           comments.forEach(function (comment) {
             $commentSection.append(

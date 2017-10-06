@@ -7,12 +7,13 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="On leaving RisingStack, and starting at GoDaddy on 2 October">
+<meta name="keywords" content="announcement">
 <meta property="og:type" content="article">
 <meta property="og:title" content="A New Chapter">
 <meta property="og:url" content="https://nemethgergely.com/a-new-chapter/index.html">
 <meta property="og:site_name" content="Gergely Nemeth">
 <meta property="og:description" content="On leaving RisingStack, and starting at GoDaddy on 2 October">
-<meta property="og:updated_time" content="2017-10-06T04:58:16.000Z">
+<meta property="og:updated_time" content="2017-10-06T21:07:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A New Chapter">
 <meta name="twitter:description" content="On leaving RisingStack, and starting at GoDaddy on 2 October">
@@ -69,6 +70,8 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" href="/using-github-for-comments-on-your-blog/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
         <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
@@ -122,8 +125,6 @@
     </div>
 
 
-      
-
     </div>
   </header>
   
@@ -137,6 +138,13 @@
   </div>
 </article>
 
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/announcement/">announcement</a>
+    </div>
+
+
+
   <script>
     var apiUrl = 'https://api.github.com/repos/gergelyke/gergelyke.github.io/issues/1/comments'
 
@@ -147,6 +155,7 @@
         },
         dataType: 'json',
         success: function(comments) {
+          console.log(comments  )
           const $commentSection = $('.blog-post-comments')
           comments.forEach(function (comment) {
             $commentSection.append(

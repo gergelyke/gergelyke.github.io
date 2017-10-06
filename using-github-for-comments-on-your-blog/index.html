@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="A free Disqus alternative using GitHub comments, mainly for blogs with developer audiences">
+<meta name="keywords" content="github,tutorials">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Using GitHub for comments on your blog">
+<meta property="og:url" content="https://nemethgergely.com/using-github-for-comments-on-your-blog/index.html">
+<meta property="og:site_name" content="Gergely Nemeth">
+<meta property="og:description" content="A free Disqus alternative using GitHub comments, mainly for blogs with developer audiences">
+<meta property="og:image" content="https://nemethgergely.com/images/disqus_load_time.png">
+<meta property="og:updated_time" content="2017-10-07T17:27:23.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Using GitHub for comments on your blog">
+<meta name="twitter:description" content="A free Disqus alternative using GitHub comments, mainly for blogs with developer audiences">
+<meta name="twitter:image" content="https://nemethgergely.com/images/disqus_load_time.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Using GitHub for comments on your blog</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/public-speaking/">Public speaking</a></li>
+         
+          <li><a href="/community-events/">Community events</a></li>
+         
+          <li><a href="/publications/">Publications</a></li>
+         
+          <li><a href="/archives/">Blog</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/a-new-chapter/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://nemethgergely.com/using-github-for-comments-on-your-blog/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://nemethgergely.com/using-github-for-comments-on-your-blog/&text=Using GitHub for comments on your blog"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://nemethgergely.com/using-github-for-comments-on-your-blog/&title=Using GitHub for comments on your blog"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nemethgergely.com/using-github-for-comments-on-your-blog/&is_video=false&description=Using GitHub for comments on your blog"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Using GitHub for comments on your blog&body=Check out this article: https://nemethgergely.com/using-github-for-comments-on-your-blog/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://nemethgergely.com/using-github-for-comments-on-your-blog/&title=Using GitHub for comments on your blog"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://nemethgergely.com/using-github-for-comments-on-your-blog/&title=Using GitHub for comments on your blog"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://nemethgergely.com/using-github-for-comments-on-your-blog/&title=Using GitHub for comments on your blog"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://nemethgergely.com/using-github-for-comments-on-your-blog/&title=Using GitHub for comments on your blog"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://nemethgergely.com/using-github-for-comments-on-your-blog/&name=Using GitHub for comments on your blog&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#The-problem-with-Disqus"><span class="toc-number">1.</span> <span class="toc-text">The problem with Disqus</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#What-I-ended-up-using-instead-GitHub"><span class="toc-number">2.</span> <span class="toc-text">What I ended up using instead: GitHub</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gotchas"><span class="toc-number">3.</span> <span class="toc-text">Gotchas</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Using GitHub for comments on your blog
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Gergely Nemeth</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-10-07T07:00:00.000Z" itemprop="datePublished">2017-10-07</time>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>As I’ve just started to build my personal website, I wanted to add a comment section for each published article. Previously I’ve used Disqus to do so - however, this time I wanted to keep it as lightweight as possible.</p>
+<h3 id="The-problem-with-Disqus"><a href="#The-problem-with-Disqus" class="headerlink" title="The problem with Disqus"></a>The problem with Disqus</h3><p>Disqus is a great product, no question there. But all the great features Disqus has to offer come with a price. A price you will pay with the loading time of your website:</p>
+<p><img src="/images/disqus_load_time.png" alt="disqus load time"></p>
+<p>If you are interested in details how Disqus works, check out the article I wrote a few years back on the topic on the RisingStack blog: <a href="https://blog.risingstack.com/on-third-party-javascript-in-production/" target="_blank" rel="external">On Third-Party JavaScript - In Production Case-Study</a>.</p>
+<h3 id="What-I-ended-up-using-instead-GitHub"><a href="#What-I-ended-up-using-instead-GitHub" class="headerlink" title="What I ended up using instead: GitHub"></a>What I ended up using instead: GitHub</h3><p><a href="https://developer.github.com/v3/" target="_blank" rel="external">GitHub has a very well documented REST API</a>, which exposes most of the resources used by GitHub. Luckily, it also exposes issues, with all of their information, <a href="https://developer.github.com/v3/issues/#get-a-single-issue" target="_blank" rel="external">including comments</a>! 🤗 </p>
+<p>The only thing left was to write a small JavaScript snippet that grabs the details of an issue and append it to the website. The script looks like something like this:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> apiUrl = <span class="string">'https://api.github.com/repos/gergelyke/gergelyke.github.io/issues/&lt;%- page.githubIssueId %&gt;/comments'</span></div><div class="line"></div><div class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </div><div class="line">  $.ajax(apiUrl, &#123;</div><div class="line">    headers: &#123;</div><div class="line">        Accept: <span class="string">'application/vnd.github.v3.html+json'</span></div><div class="line">    &#125;,</div><div class="line">    dataType: <span class="string">'json'</span>,</div><div class="line">    success: <span class="function"><span class="keyword">function</span>(<span class="params">comments</span>) </span>&#123;</div><div class="line">      <span class="keyword">const</span> $commentSection = $(<span class="string">'.blog-post-comments'</span>)</div><div class="line">      comments.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">comment</span>) </span>&#123;</div><div class="line">        $commentSection.append(</div><div class="line">          <span class="string">`</span></div><div class="line"><span class="string">          &lt;div class="comment"&gt;</span></div><div class="line"><span class="string">            &lt;a class="commenter" href="<span class="subst">$&#123;comment.user.html_url&#125;</span>" </span></div><div class="line"><span class="string">              target="_blank"&gt;<span class="subst">$&#123;comment.user.login&#125;</span>&lt;/a&gt;, </span></div><div class="line"><span class="string">              <span class="subst">$&#123;<span class="keyword">new</span> <span class="built_in">Date</span>(comment.created_at).toUTCString()&#125;</span></span></div><div class="line"><span class="string">            &lt;p&gt;</span></div><div class="line"><span class="string">              <span class="subst">$&#123;comment.body_html&#125;</span></span></div><div class="line"><span class="string">            &lt;/p&gt;</span></div><div class="line"><span class="string">          &lt;/div&gt;</span></div><div class="line"><span class="string">          `</span></div><div class="line">        )</div><div class="line">      &#125;)</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>Actually, you can already comment on this post using the very technique you just read about! Give it a try! 😎</p>
+<p>You can see the actual implementation <a href="https://github.com/gergelyke/gergelyke.github.io/blob/master/src/themes/cactus-light/layout/_partial/comments.ejs" target="_blank" rel="external">here</a>.</p>
+<h3 id="Gotchas"><a href="#Gotchas" class="headerlink" title="Gotchas"></a>Gotchas</h3><p>As most solutions, using GitHub for the comment engine on your site has some drawbacks:</p>
+<ul>
+<li><a href="https://developer.github.com/v3/#rate-limiting" target="_blank" rel="external">GitHub rate limits its’ APIs</a>, so this solution won’t work if you have a huge number of visitors,</li>
+<li>it only suits audiences with GitHub accounts.</li>
+</ul>
+<p>If you are ok with this limitations, GitHub provides a great way to let your audience comment on your writings.</p>
+
+  </div>
+</article>
+
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/github/">github</a>, <a class="tag-link" href="/tags/tutorials/">tutorials</a>
+    </div>
+
+
+
+  <script>
+    var apiUrl = 'https://api.github.com/repos/gergelyke/gergelyke.github.io/issues/2/comments'
+
+    document.addEventListener('DOMContentLoaded', function(event) { 
+      $.ajax(apiUrl, {
+        headers: {
+          Accept: 'application/vnd.github.v3.html+json'
+        },
+        dataType: 'json',
+        success: function(comments) {
+          console.log(comments  )
+          const $commentSection = $('.blog-post-comments')
+          comments.forEach(function (comment) {
+            $commentSection.append(
+              `
+              <div class="comment">
+                <a class="commenter" href="${comment.user.html_url}" target="_blank">${comment.user.login}</a>, ${new Date(comment.created_at).toUTCString()}
+                <p>
+                  ${comment.body_html}
+                </p>
+              </div>
+              `
+            )
+          })
+        }
+      })
+    })
+  </script>
+  <div class="blog-post-comments">
+    <a class="blog-post-comment-button" href="https://github.com/gergelyke/gergelyke.github.io/issues/2#new_comment_field" target="_blank">Visit GitHub to add a comment</a>
+  </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/public-speaking/">Public speaking</a></li>
+         
+          <li><a href="/community-events/">Community events</a></li>
+         
+          <li><a href="/publications/">Publications</a></li>
+         
+          <li><a href="/archives/">Blog</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#The-problem-with-Disqus"><span class="toc-number">1.</span> <span class="toc-text">The problem with Disqus</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#What-I-ended-up-using-instead-GitHub"><span class="toc-number">2.</span> <span class="toc-text">What I ended up using instead: GitHub</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gotchas"><span class="toc-number">3.</span> <span class="toc-text">Gotchas</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://nemethgergely.com/using-github-for-comments-on-your-blog/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://nemethgergely.com/using-github-for-comments-on-your-blog/&text=Using GitHub for comments on your blog"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://nemethgergely.com/using-github-for-comments-on-your-blog/&title=Using GitHub for comments on your blog"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nemethgergely.com/using-github-for-comments-on-your-blog/&is_video=false&description=Using GitHub for comments on your blog"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Using GitHub for comments on your blog&body=Check out this article: https://nemethgergely.com/using-github-for-comments-on-your-blog/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://nemethgergely.com/using-github-for-comments-on-your-blog/&title=Using GitHub for comments on your blog"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://nemethgergely.com/using-github-for-comments-on-your-blog/&title=Using GitHub for comments on your blog"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://nemethgergely.com/using-github-for-comments-on-your-blog/&title=Using GitHub for comments on your blog"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://nemethgergely.com/using-github-for-comments-on-your-blog/&title=Using GitHub for comments on your blog"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://nemethgergely.com/using-github-for-comments-on-your-blog/&name=Using GitHub for comments on your blog&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 Gergely Nemeth
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/public-speaking/">Public speaking</a></li>
+         
+          <li><a href="/community-events/">Community events</a></li>
+         
+          <li><a href="/publications/">Publications</a></li>
+         
+          <li><a href="/archives/">Blog</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-105150509-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+

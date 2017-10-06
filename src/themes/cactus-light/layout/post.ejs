@@ -6,7 +6,6 @@
         <span itemprop="name"><% if (page.author) { %><%- page.author %><% } else { %><%- config.title %><% } %></span>
       </span>
       <%- partial('_partial/post/date', { post: page, class_name: 'postdate' }) %>
-      <%- partial('_partial/post/tag') %>
     </div>
   </header>
   <%- partial('_partial/post/gallery') %>
@@ -14,4 +13,5 @@
     <%- page.content %>
   </div>
 </article>
+<%- partial('_partial/post/tag') %>
 <%- partial('_partial/comments') %>

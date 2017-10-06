@@ -3,6 +3,8 @@ title: A New Chapter
 description: On leaving RisingStack, and starting at GoDaddy on 2 October
 githubIssueId: 1
 date: 2017-10-02
+tags:
+    - 'announcement'
 ---
 
 We founded [RisingStack](https://risingstack.com) a little bit more than three years ago, back in the summer of 2014. Since then, we had the pleasure to work with companies from all around the world to help them with their Node.js efforts. RisingStack became one of the top companies advocating the usage of Node.js, by publishing tremendous amount of [blog posts](https://blog.risingstack.com/) as well as organizing [meetups](https://meetup.com/nodejsbp/) and [conferences](http://nodeconf.risingstack.com/) - that I am very proud of.

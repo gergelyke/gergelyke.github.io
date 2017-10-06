@@ -740,7 +740,6 @@ body {
 #header-post #actions {
   float: right;
   margin-top: 2rem;
-  width: 100%;
   text-align: right;
 }
 #header-post #actions ul {
@@ -1133,16 +1132,12 @@ article .content .caption {
   font-size: 1.5em;
   line-height: 1.25;
 }
+.article-tag {
+  padding: 1em;
+  border: 1px solid #ccc;
+}
 .article-tag .tag-link:before {
   content: "#";
-}
-@media (min-width: 480px) {
-  .article-tag {
-    display: inline;
-  }
-  .article-tag:before {
-    content: "|";
-  }
 }
 #archive .post-list {
   padding: 0;
@@ -1170,7 +1165,7 @@ article .content .caption {
   }
 }
 .blog-post-comments {
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 .blog-post-comments .blog-post-comment-button {
   display: block;
