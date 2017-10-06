@@ -1,7 +1,32 @@
-<% if(page.comments && theme.plugins.disqus_shortname){ %>
-    <div class="blog-post-comments">
-        <div id="disqus_thread">
-            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        </div>
-    </div>
+<% if(page.githubIssueId){ %>
+  <script>
+    var apiUrl = 'https://api.github.com/repos/gergelyke/gergelyke.github.io/issues/<%- page.githubIssueId %>/comments'
+
+    document.addEventListener('DOMContentLoaded', function(event) { 
+      $.ajax(apiUrl, {
+        headers: {
+          Accept: 'application/vnd.github.v3.html+json'
+        },
+        dataType: 'json',
+        success: function(comments) {
+          const $commentSection = $('.blog-post-comments')
+          comments.forEach(function (comment) {
+            $commentSection.append(
+              `
+              <div class="comment">
+                <a class="commenter" href="${comment.user.html_url}" target="_blank">${comment.user.login}</a>, ${new Date(comment.created_at).toUTCString()}
+                <p>
+                  ${comment.body_html}
+                </p>
+              </div>
+              `
+            )
+          })
+        }
+      })
+    })
+  </script>
+  <div class="blog-post-comments">
+    <a class="blog-post-comment-button" href="https://github.com/gergelyke/gergelyke.github.io/issues/<%- page.githubIssueId %>#new_comment_field" target="_blank">Visit GitHub to add a comment</a>
+  </div>
 <% } %>

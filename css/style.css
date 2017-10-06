@@ -1172,6 +1172,13 @@ article .content .caption {
 .blog-post-comments {
   margin-top: 4rem;
 }
+.blog-post-comments .blog-post-comment-button {
+  display: block;
+  text-align: center;
+  border: 1px solid #000;
+  padding: 0.7em 1em;
+  margin-bottom: 3em;
+}
 #footer {
   padding-top: 10px;
   padding-bottom: 10px;
