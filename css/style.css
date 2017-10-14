@@ -974,6 +974,23 @@ body {
     display: none;
   }
 }
+#revue-embed {
+  text-align: center;
+  background: #f8f8f8;
+  padding: 1em;
+  border: 1px dotted #ddd;
+}
+#revue-embed form {
+  margin-top: 1em;
+}
+#revue-embed span {
+  font-style: italic;
+  font-size: 0.75em;
+}
+#revue-embed a {
+  font-size: 0.85em;
+  font-weight: bold;
+}
 #sociallinks {
   display: inline-block;
   list-style: none;
