@@ -65,6 +65,16 @@ Luckily, the Node.js Security Project, as well as Snyk maintains security adviso
 
 ## Resources
 
-### Open-source to secure your applications
+### Further readings
+
+* [Node.js security checklist](https://blog.risingstack.com/node-js-security-checklist/)
+* [OWASP Node.js Security](https://www.owasp.org/images/f/fa/AppSecIL2016_NodeJS-Security_LiranTal.pdf)
+* [Node.js Security Handbook](https://www.sqreen.io/resources/nodejs-security-handbook.html)
 
 ### Companies helping with Node.js security
+
+* [^Lift Security](https://liftsecurity.io) - penetration testing, application security
+* [RisingStack](https://risingstack.com) - code reviews
+* [NSP](https://nodesecurity.io/) - continuous security monitoring for your node apps
+* [Snyk](https://snyk.io) - continuously find & fix vulnerabilities in your dependencies
+* [Sqreen](https://www.sqreen.io/) - web application and user protection
