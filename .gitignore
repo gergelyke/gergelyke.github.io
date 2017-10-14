@@ -3,6 +3,7 @@ logs
 *.log
 npm-debug.log*
 src/public
+src/db.json
 
 # Runtime data
 pids
