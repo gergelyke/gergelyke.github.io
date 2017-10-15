@@ -8,9 +8,9 @@ tags:
     - 'node.js'
 ---
 
-The initial Node.js release happened a little bit more than 8 years ago. Since then Node.js became of the leading platforms for building backend applications. As such, security becomes more and more important. 
+The initial Node.js release happened a little bit more than 8 years ago. Since then Node.js became one of the leading platforms for building backend applications. As such, security becomes more and more important.
 
-In the first part of this article you will learn where Node.js and npm are where it comes to security, and in the second part, you will learn some best security practices which you can immediately apply to your Node.js applications.
+In the first part of this article you will learn where Node.js and npm are when it comes to security. In the second part, you will learn some best security practices which you can immediately apply to your Node.js applications.
 
 ## Why security matters?
 
@@ -28,14 +28,14 @@ As of today, Node.js and its core contributors maintain many different channels 
 
 In 2016, at Node.js Interactive in Austin, the Security Working Group was formed, addressing the need for a working group focusing on security. It is mainly responsible for defining and maintaining security policies and procedures for the core Node.js project and other projects maintained by the Node.js Foundation.
 
-Also, it helps with:
+The Security Working Group also helps with:
 
 * the Node.js Security project to bring vulnerability data into the Foundation,
 * review and recommend processes for handling of security reports,
 * recommend security improvements for the core Node.js project,
 * facilitate and promote the expansion of a healthy security service and product provider ecosystem vulnerabilities.
 
-For more information, check out the [Security working group](https://github.com/nodejs/security-wg).
+For more information, check out the [Security working group GitHub repository](https://github.com/nodejs/security-wg).
 
 ### Responsible disclosure of potential security issues
 
@@ -56,11 +56,11 @@ As the responsible maintainer and developer of the registry, npm, make important
 
 ---
 
-<center>**⚠️ Before continuing reading the article, take a minute to [enable Two-Factor Authentication for your npm account now](https://docs.npmjs.com/getting-started/using-two-factor-authentication). ⚠️**</center>
+<center>**⚠️ Before you continue reading the article, take a minute to [enable Two-Factor Authentication for your npm account now](https://docs.npmjs.com/getting-started/using-two-factor-authentication). ⚠️**</center>
 
 ---
 
-Even if npm does everything in its' power to secure the registry, it can still happen that modules have security vulnerabilities. As most applications can easily end up depending on hundreds if not thousands of modules, auditing each one of them before you start using them is not something you have the time to do.
+Even if npm does everything in its power to secure the registry, it can still happen that modules have security vulnerabilities. As most applications can easily end up depending on hundreds if not thousands of modules, auditing each one of them before you start using them is not something you have the time to do.
 
 Luckily, the Node.js Security Project, as well as Snyk maintains security advisories, with both companies offering paid subscription plans to run their tools in CI/CD environments:
 
@@ -98,7 +98,7 @@ app.use(helmet())
 
 Validating user input is one of the most important things to do when it comes to the security of your application. Failing to do it correctly can open up your application and users to a wide range of attacks, including [command injection](https://www.owasp.org/index.php/Command_Injection), [SQL injection](https://www.owasp.org/index.php/SQL_Injection) or [stored cross-site scripting](https://www.veracode.com/security/sql-injection).
 
-To validate user input, one of the best libraries you can pick is [joi](https://www.npmjs.com/package/joi). Joi io an object schema description language and validator for JavaScript objects. To get an idea what it can do for you, take a look at the following example:
+To validate user input, one of the best libraries you can pick is [joi](https://www.npmjs.com/package/joi). Joi is an object schema description language and validator for JavaScript objects. To get an idea what it can do for you, take a look at the following example:
 
 ```javascript
 const Joi = require('joi');
@@ -145,6 +145,8 @@ Combined with the fact that Node.js is single-threaded by nature, with a single 
 * `(a+)+`
 * `([a-zA-Z]+)*`
 * `(a|aa)+`
+
+A potential input that can cause the first regular expression to run very slowly is `aaaaaaaaaaaaaaaaaaaaaaaaX`.
 
 To detect these regular expressions, you can use the [safe-regex](https://www.npmjs.com/package/safe-regex) module.
 
