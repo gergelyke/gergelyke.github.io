@@ -1,7 +1,7 @@
 ---
 title: Node.js Security Overview
 description: A look at where we are with Node.js security, and what you can do to keep your customer's data safe
-githubIssueId: 3
+githubIssueId: 4
 date: 2017-10-12
 tags:
     - 'report'
