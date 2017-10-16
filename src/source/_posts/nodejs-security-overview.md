@@ -189,7 +189,6 @@ I hope this article helped you better understand how security in the Node.js eco
 ### Companies helping with Node.js security
 
 * [^Lift Security](https://liftsecurity.io) - penetration testing, application security
-* [RisingStack](https://risingstack.com) - code reviews, application security
 * [NSP](https://nodesecurity.io/) - continuous security monitoring for your node apps
 * [Snyk](https://snyk.io) - continuously find & fix vulnerabilities in your dependencies
 * [Sqreen](https://www.sqreen.io/) - web application and user protection
