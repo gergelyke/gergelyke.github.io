@@ -1,6 +1,6 @@
 <% if(page.githubIssueId){ %>
   <script>
-    var apiUrl = 'https://api.github.com/repos/gergelyke/gergelyke.github.io/issues/<%- page.githubIssueId %>/comments'
+    var apiUrl = 'https://api.github.com/repos/gergelyke/gergelyke.github.io/issues/<%- page.githubIssueId %>/comments?per_page=100'
 
     document.addEventListener('DOMContentLoaded', function(event) { 
       $.ajax(apiUrl, {
