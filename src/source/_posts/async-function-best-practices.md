@@ -2,14 +2,14 @@
 title: Node.js Async Function Best Practices
 description: Mastering async functions in Node.js - error handling, parallel execution and complex control flows
 githubIssueId: 5
-date: 2017-10-24
+date: 2017-10-23
 tags:
     - 'node.js'
     - 'best practices'
     - 'async await'
 ---
 
-Since Node.js version 7.6, Node.js ships with a new V8 version that features async functions. As [Node.js 8 becomes the active LTS version on October 31](https://github.com/nodejs/Release), there is no reason for not starting to adopt async functions in your codebase. In this article I will briefly show you what async functions are, and how they change the way we write Node.js applications.
+Since Node.js version 7.6, Node.js ships with a new V8 version that features async functions. As [Node.js 8 becomes the active LTS version on October 31](https://github.com/nodejs/Release), there is no reason for not starting to adopt async functions in your codebase. In this article, I will briefly show you what async functions are, and how they change the way we write Node.js applications.
 
 # What are `async` functions?
 
@@ -197,4 +197,4 @@ main()
 
 I hope you enjoyed this article and learned a lot! 👩‍🎓👨‍🎓 If you'd like to get my latest articles right into your mailbox, you can [sign up here](https://www.getrevue.co/profile/gergelyke) to my newsletter 📨.
 
-Also, if there is anything you'd like to learn more about and read on this blog, just let me know in the comments sections, or drop me a message on [twitter](https://twitter.com/nthgergo)!
+Also, if there is anything you'd like to learn more about and read on this blog, just let me know in the comments sections, or drop me a message on [Twitter](https://twitter.com/nthgergo)!

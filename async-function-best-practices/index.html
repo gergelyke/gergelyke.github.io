@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Mastering async functions in Node.js - error handling, parallel execution and complex control flows">
+<meta name="keywords" content="node.js,best practices,async await">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js Async Function Best Practices">
+<meta property="og:url" content="https://nemethgergely.com/async-function-best-practices/index.html">
+<meta property="og:site_name" content="Gergely Nemeth">
+<meta property="og:description" content="Mastering async functions in Node.js - error handling, parallel execution and complex control flows">
+<meta property="og:updated_time" content="2017-10-23T13:39:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Node.js Async Function Best Practices">
+<meta name="twitter:description" content="Mastering async functions in Node.js - error handling, parallel execution and complex control flows">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Node.js Async Function Best Practices</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/public-speaking/">Public speaking</a></li>
+         
+          <li><a href="/community-events/">Community events</a></li>
+         
+          <li><a href="/publications/">Publications</a></li>
+         
+          <li><a href="/archives/">Blog</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/nodejs-security-overview/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://nemethgergely.com/async-function-best-practices/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://nemethgergely.com/async-function-best-practices/&text=Node.js Async Function Best Practices"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://nemethgergely.com/async-function-best-practices/&title=Node.js Async Function Best Practices"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nemethgergely.com/async-function-best-practices/&is_video=false&description=Node.js Async Function Best Practices"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Node.js Async Function Best Practices&body=Check out this article: https://nemethgergely.com/async-function-best-practices/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://nemethgergely.com/async-function-best-practices/&title=Node.js Async Function Best Practices"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://nemethgergely.com/async-function-best-practices/&title=Node.js Async Function Best Practices"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://nemethgergely.com/async-function-best-practices/&title=Node.js Async Function Best Practices"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://nemethgergely.com/async-function-best-practices/&title=Node.js Async Function Best Practices"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://nemethgergely.com/async-function-best-practices/&name=Node.js Async Function Best Practices&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Node.js Async Function Best Practices
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Gergely Nemeth</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-10-23T07:00:00.000Z" itemprop="datePublished">2017-10-23</time>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div id="revue-embed">
+    <span>Updates once a month. I hate spam too.</span>
+    <br/>
+    <a href="https://www.getrevue.co/profile/gergelyke" target="_blank">Subscribe now</a>
+</div>
+  <div class="content" itemprop="articleBody">
+    <p>Since Node.js version 7.6, Node.js ships with a new V8 version that features async functions. As <a href="https://github.com/nodejs/Release" target="_blank" rel="external">Node.js 8 becomes the active LTS version on October 31</a>, there is no reason for not starting to adopt async functions in your codebase. In this article, I will briefly show you what async functions are, and how they change the way we write Node.js applications.</p>
+<h1 id="What-are-async-functions"><a href="#What-are-async-functions" class="headerlink" title="What are async functions?"></a>What are <code>async</code> functions?</h1><p><code>async</code> functions let you write <code>Promise</code>-based code as if it were synchronous. Once you define a function using the <code>async</code> keyword, then you can use the <code>await</code> keyword within the function’s body. When the <code>async</code> function is called, it returns with a <code>Promise</code>. When the <code>async</code> function returns a value, the <code>Promise</code> gets fulfilled, if the <code>async</code> function throws an error, it gets rejected.</p>
+<p>The <code>await</code> keyword can be used to wait for a <code>Promise</code> to be resolved and returns the fulfilled value. If the value passed to the <code>await</code> keyword is not a Promise, it converts the value to a resolved <code>Promise</code>. </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> rp = <span class="built_in">require</span>(<span class="string">'request-promise'</span>)</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">main</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> result = <span class="keyword">await</span> rp(<span class="string">'https://google.com'</span>)</div><div class="line">  <span class="keyword">const</span> twenty = <span class="keyword">await</span> <span class="number">20</span></div><div class="line">  </div><div class="line">  <span class="comment">// sleeeeeeeeping  for a second 💤</span></div><div class="line">  <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span> (<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</div><div class="line">    setTimeout(resolve, <span class="number">1000</span>)</div><div class="line">  &#125;)</div><div class="line"></div><div class="line">  <span class="keyword">return</span> result</div><div class="line">&#125;</div><div class="line"></div><div class="line">main()</div><div class="line">  .then(<span class="built_in">console</span>.log)</div><div class="line">  .catch(<span class="built_in">console</span>.error)</div></pre></td></tr></table></figure>
+<h1 id="Migrating-to-async-functions"><a href="#Migrating-to-async-functions" class="headerlink" title="Migrating to async functions"></a>Migrating to <code>async</code> functions</h1><p>If your Node.js applications are already using <code>Promise</code>s, then you only have to start <code>await</code>ing your Promises, instead of chaining them.</p>
+<p>If your applications are built using callbacks, moving to <code>async</code> functions should be done gradually. You can start adding new features by using this new technique. If you have to use older parts of the application, you can simply wrap them into Promises.</p>
+<p>To do so, you can use the built-in <code>util.promisify</code> method:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> util = <span class="built_in">require</span>(<span class="string">'util'</span>)</div><div class="line"><span class="keyword">const</span> &#123;readFile&#125; = <span class="built_in">require</span>(<span class="string">'fs'</span>)</div><div class="line"></div><div class="line"><span class="keyword">const</span> readFileAsync = util.promisify(readFile)</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">main</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> result = <span class="keyword">await</span> readFileAsync(<span class="string">'.gitignore'</span>)</div><div class="line">  <span class="keyword">return</span> result</div><div class="line">&#125;</div><div class="line"></div><div class="line">main()</div><div class="line">  .then(<span class="built_in">console</span>.log)</div><div class="line">  .catch(<span class="built_in">console</span>.error)</div></pre></td></tr></table></figure>
+<h1 id="Best-Practices-for-async-functions"><a href="#Best-Practices-for-async-functions" class="headerlink" title="Best Practices for async functions"></a>Best Practices for <code>async</code> functions</h1><h2 id="Using-async-functions-with-express"><a href="#Using-async-functions-with-express" class="headerlink" title="Using async functions with express"></a>Using <code>async</code> functions with <code>express</code></h2><p>As <code>express</code> supports Promises out of the box, using <code>async</code> functions with express is as simple as:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</div><div class="line"><span class="keyword">const</span> app = express()</div><div class="line"></div><div class="line">app.get(<span class="string">'/'</span>, <span class="keyword">async</span> (request, response) =&gt; &#123;</div><div class="line">  <span class="comment">// awaiting Promises</span></div><div class="line">  <span class="keyword">const</span> result = <span class="keyword">await</span> getContent()</div><div class="line"></div><div class="line">  <span class="keyword">return</span> result</div><div class="line">&#125;)</div><div class="line"></div><div class="line">app.listen(process.env.PORT)</div></pre></td></tr></table></figure>
+<h2 id="Parallel-execution"><a href="#Parallel-execution" class="headerlink" title="Parallel execution"></a>Parallel execution</h2><p>Imagine you are working on something similar, when an operation needs two inputs, one from a database, and one from an external service:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">main</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> user = <span class="keyword">await</span> Users.fetch(userId)</div><div class="line">  <span class="keyword">const</span> product = <span class="keyword">await</span> Products.fetch(productId)</div><div class="line"></div><div class="line">  <span class="keyword">await</span> makePurchase(user, product)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>In this case, what will happen is the following:</p>
+<ul>
+<li>your code will first get the <code>user</code> resource,</li>
+<li>then get the <code>product</code> resource,</li>
+<li>and finally make the purchase.</li>
+</ul>
+<p>As you can see, you can do the first two in parallel, as they have no dependency on each other. For this, you should use the <code>Promise.all</code> method:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">main</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  [user, product] = <span class="keyword">await</span> <span class="built_in">Promise</span>.all([</div><div class="line">    Users.fetch(userId),</div><div class="line">    Products.fetch(productId)</div><div class="line">  ])</div><div class="line"></div><div class="line">  <span class="keyword">await</span> makePurchase(user, product)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>In some cases, you only need the result of the fastest resolving Promise - in that cases, you can use the <code>Promise.race</code> method.</p>
+<h2 id="Error-handling"><a href="#Error-handling" class="headerlink" title="Error handling"></a>Error handling</h2><p>Consider the following code example:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">main</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">    reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'💥'</span>))</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">main()</div><div class="line">  .then(<span class="built_in">console</span>.log)</div></pre></td></tr></table></figure>
+<p>Once running this snippet, you will get a message in your terminal saying something similar:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(node:69738) UnhandledPromiseRejectionWarning: Unhandled promise rejection (rejection id: 2): Error: 💥</div><div class="line">(node:69738) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero <span class="built_in">exit</span> code.</div></pre></td></tr></table></figure>
+<p>In the newer versions of Node.js, if Promise rejections won’t be handled, it will bring down the whole Node.js process. Because of this, you should  use <code>try-catch</code> blocks, when necessary:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> util = <span class="built_in">require</span>(<span class="string">'util'</span>)</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">main</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">      reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'💥'</span>))</div><div class="line">    &#125;)</div><div class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</div><div class="line">    <span class="comment">// handle error case</span></div><div class="line">    <span class="comment">// maybe throwing is okay depending on your use-case</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">main()</div><div class="line">  .then(<span class="built_in">console</span>.log)</div><div class="line">  .catch(<span class="built_in">console</span>.error)</div></pre></td></tr></table></figure>
+<h2 id="More-complex-control-flows"><a href="#More-complex-control-flows" class="headerlink" title="More complex control flows"></a>More complex control flows</h2><p>One of the first async control flow libraries for Node.js was the one called <a href="http://caolan.github.io/async/" target="_blank" rel="external">async</a> created by <a href="https://twitter.com/caolan" target="_blank" rel="external">Caolan McMahon</a>. It provides asynchronous helpers, like:</p>
+<ul>
+<li><code>mapLimit</code>,</li>
+<li><code>filterLimit</code>,</li>
+<li><code>concatLimit</code>,</li>
+<li>or <code>priorityQueue</code>.</li>
+</ul>
+<p>If you do not want to reinvent the wheel and implement the same logic again, and you also want to depend on a battle-tested library downloaded 50 million times a month, you can simply reuse these functions with <code>async</code> functions as well, using the <code>util.promisify</code> method:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> util = <span class="built_in">require</span>(<span class="string">'util'</span>)</div><div class="line"><span class="keyword">const</span> <span class="keyword">async</span> = <span class="built_in">require</span>(<span class="string">'async'</span>)</div><div class="line"></div><div class="line"><span class="keyword">const</span> numbers = [</div><div class="line">  <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span></div><div class="line">]</div><div class="line"></div><div class="line">mapLimitAsync = util.promisify(<span class="keyword">async</span>.mapLimit)</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">main</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">await</span> mapLimitAsync(numbers, <span class="number">2</span>, (number, done) =&gt; &#123;</div><div class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">      done(<span class="literal">null</span>, number * <span class="number">2</span>)</div><div class="line">    &#125;, <span class="number">100</span>)</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">main()</div><div class="line">  .then(<span class="built_in">console</span>.log)</div><div class="line">  .catch(<span class="built_in">console</span>.error)</div></pre></td></tr></table></figure>
+<h1 id="Next-up"><a href="#Next-up" class="headerlink" title="Next up"></a>Next up</h1><p>I hope you enjoyed this article and learned a lot! 👩‍🎓👨‍🎓 If you’d like to get my latest articles right into your mailbox, you can <a href="https://www.getrevue.co/profile/gergelyke" target="_blank" rel="external">sign up here</a> to my newsletter 📨.</p>
+<p>Also, if there is anything you’d like to learn more about and read on this blog, just let me know in the comments sections, or drop me a message on <a href="https://twitter.com/nthgergo" target="_blank" rel="external">Twitter</a>!</p>
+
+  </div>
+</article>
+<center style="margin: 1em 0;">
+  <a class="twitter-follow-button" href="https://twitter.com/nthgergo" data-size="large">Follow me</a>
+</center>
+
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/async-await/">async await</a>, <a class="tag-link" href="/tags/best-practices/">best practices</a>, <a class="tag-link" href="/tags/node-js/">node.js</a>
+    </div>
+
+
+
+  <script>
+    var apiUrl = 'https://api.github.com/repos/gergelyke/gergelyke.github.io/issues/5/comments?per_page=100'
+
+    document.addEventListener('DOMContentLoaded', function(event) { 
+      $.ajax(apiUrl, {
+        headers: {
+          Accept: 'application/vnd.github.v3.html+json'
+        },
+        dataType: 'json',
+        success: function(comments) {
+          console.log(comments  )
+          const $commentSection = $('.blog-post-comments')
+          comments.forEach(function (comment) {
+            $commentSection.append(
+              `
+              <div class="comment">
+                <a class="commenter" href="${comment.user.html_url}" target="_blank">${comment.user.login}</a>, ${new Date(comment.created_at).toUTCString()}
+                <p>
+                  ${comment.body_html}
+                </p>
+              </div>
+              `
+            )
+          })
+        }
+      })
+    })
+  </script>
+  <div class="blog-post-comments">
+    <a class="blog-post-comment-button" href="https://github.com/gergelyke/gergelyke.github.io/issues/5#new_comment_field" target="_blank">Visit GitHub to add a comment</a>
+  </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/public-speaking/">Public speaking</a></li>
+         
+          <li><a href="/community-events/">Community events</a></li>
+         
+          <li><a href="/publications/">Publications</a></li>
+         
+          <li><a href="/archives/">Blog</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#What-are-async-functions"><span class="toc-number">1.</span> <span class="toc-text">What are async functions?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Migrating-to-async-functions"><span class="toc-number">2.</span> <span class="toc-text">Migrating to async functions</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Best-Practices-for-async-functions"><span class="toc-number">3.</span> <span class="toc-text">Best Practices for async functions</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Using-async-functions-with-express"><span class="toc-number">3.1.</span> <span class="toc-text">Using async functions with express</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Parallel-execution"><span class="toc-number">3.2.</span> <span class="toc-text">Parallel execution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Error-handling"><span class="toc-number">3.3.</span> <span class="toc-text">Error handling</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#More-complex-control-flows"><span class="toc-number">3.4.</span> <span class="toc-text">More complex control flows</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Next-up"><span class="toc-number">4.</span> <span class="toc-text">Next up</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://nemethgergely.com/async-function-best-practices/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://nemethgergely.com/async-function-best-practices/&text=Node.js Async Function Best Practices"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://nemethgergely.com/async-function-best-practices/&title=Node.js Async Function Best Practices"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://nemethgergely.com/async-function-best-practices/&is_video=false&description=Node.js Async Function Best Practices"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Node.js Async Function Best Practices&body=Check out this article: https://nemethgergely.com/async-function-best-practices/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://nemethgergely.com/async-function-best-practices/&title=Node.js Async Function Best Practices"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://nemethgergely.com/async-function-best-practices/&title=Node.js Async Function Best Practices"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://nemethgergely.com/async-function-best-practices/&title=Node.js Async Function Best Practices"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://nemethgergely.com/async-function-best-practices/&title=Node.js Async Function Best Practices"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://nemethgergely.com/async-function-best-practices/&name=Node.js Async Function Best Practices&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 Gergely Nemeth
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/public-speaking/">Public speaking</a></li>
+         
+          <li><a href="/community-events/">Community events</a></li>
+         
+          <li><a href="/publications/">Publications</a></li>
+         
+          <li><a href="/archives/">Blog</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-105150509-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+
+
+<script>window.twttr = (function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+    if (d.getElementById(id)) return t;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+
+    t._e = [];
+    t.ready = function(f) {
+        t._e.push(f);
+    };
+
+    return t;
+}(document, "script", "twitter-wjs"));</script>
+
