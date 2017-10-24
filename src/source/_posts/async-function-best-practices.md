@@ -1,7 +1,7 @@
 ---
 title: Node.js Async Function Best Practices
 description: Mastering async functions in Node.js - error handling, parallel execution and complex control flows
-githubIssueId: 5
+githubIssueId: 6
 date: 2017-10-23
 tags:
     - 'node.js'
