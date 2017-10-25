@@ -72,13 +72,38 @@ const express = require('express')
 const app = express()
 
 app.get('/', async (request, response) => {
-  // awaiting Promises
+  // awaiting Promises here
+
+  // if you just await a single promise, you could simply return with it,
+  // no need to await for it
   const result = await getContent()
 
-  return result
+  response.send(result)
 })
 
 app.listen(process.env.PORT)
+```
+
+*Edit 1:* as Keith Smith pointed out, the above example has a serious issue - if the Promise gets rejected, the `express` route handler would just hang because there was no error handling there.
+
+To fix this issue, you should wrap your async handlers in a function that handles errors:
+
+```javascript
+const awaitHandlerFactory = (middleware) => {
+  return async (req, res, next) => {
+    try {
+      await middleware(req, res, next)
+    } catch (err) {
+      next(err)
+    }
+  }
+}
+
+// and use it this way:
+app.get('/', awaitHandlerFactory(async (request, response) => {
+  const result = await getContent()
+  response.send(result)
+}))
 ```
 
 ## Parallel execution
@@ -104,7 +129,7 @@ As you can see, you can do the first two in parallel, as they have no dependency
 
 ```javascript
 async function main () {
-  [user, product] = await Promise.all([
+  const [user, product] = await Promise.all([
     Users.fetch(userId),
     Products.fetch(productId)
   ])
