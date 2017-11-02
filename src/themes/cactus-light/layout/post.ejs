@@ -1,5 +1,6 @@
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
+  <header id="header">
+    <div id="logo" style="background-image: url(<%- url_for(theme.customize.logo.url) %>);"></div>
     <%- partial('_partial/post/title', { post: page, index: false, class_name: 'posttitle' }) %>
     <div class="meta">
       <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
