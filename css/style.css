@@ -544,7 +544,7 @@ body {
 #header {
   max-width: 710px;
   width: 100%;
-  margin: 0 auto 3rem auto;
+  margin: 0 auto 1rem auto;
 }
 #header h1,
 #header .h1 {
@@ -573,8 +573,6 @@ body {
   background-repeat: no-repeat;
   background-size: 50px 50px;
   border-radius: 5px;
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
 }
 #header #nav {
   letter-spacing: 0.01em;
