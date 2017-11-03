@@ -1334,6 +1334,7 @@ article .content .caption {
   border-bottom: 1px solid #666;
 }
 pre {
+  margin: 0;
   font-family: "Menlo", "Meslo LG", monospace;
   font-size: 13px;
   padding: 10px 15px;
