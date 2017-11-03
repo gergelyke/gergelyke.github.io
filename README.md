@@ -1,3 +1,1 @@
 ## Website for Gergely Nemeth
-
-😊😊
