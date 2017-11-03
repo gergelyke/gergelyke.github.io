@@ -8,7 +8,9 @@ tags:
     - 'release'
 ---
 
-Node.js 8.9.0 just became the LTS (Long Term Support) version of Node.js under the codename  Carbon, and it will be maintained till December 31, 2019 to align wit the scheduled end-of-life of OpenSSL-1.0.2.
+Node.js 8.9.0 just became the LTS (Long Term Support) version of Node.js under the codename  Carbon, and it will be maintained till December 31, 2019, to align with the scheduled end-of-life of OpenSSL-1.0.2.
+
+Node.js 9 will serve as the base for the next LTS release, Node.js 10, which will become the active LTS version in October 2018.
 
 To read more on Node.js releases, read the official [Node.js Releases](https://github.com/nodejs/Release) repository.
 
@@ -73,5 +75,23 @@ const isEq = isDeepStrictEqual({
 
 ## Callbackify added to `util`
 
-https://github.com/nodejs/node/pull/12712
-`
+With Node.js 8 `util.promisify` got added. However, because of compatibility reasons, there was a need for the opposite - a method that can convert Promises to an error-first, callback taking function.
+
+```javascript
+const { callbackify } = require('util')
+
+async function main () {
+  await Promise.resolve()
+}
+
+callbackify(main)(function (err) {
+  if (err) {
+    return console.error(err)
+  }
+
+  console.log('finsihed without an error')
+})
+```
+
+
+## More static error codes
