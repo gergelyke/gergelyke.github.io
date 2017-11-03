@@ -106,7 +106,7 @@ if (err.message === 'Can\'t set headers after they are sent.') {
 }
 ```
 
-The problem with this approach is that even a typo fix would cause a SemVer major change. And it gets even worse when you want to fix a misleading error message. To solve the issue, the Node.js core started to assign static error messages to errors. You can check them out on the [errors docs page](https://nodejs.org/api/errors.html#errors_node_js_error_codes).
+The problem with this approach is that even a typo fix would cause a SemVer major change. And it gets even worse when you want to fix a misleading error message. To solve the issue, the Node.js core started to assign static error codes to errors. You can check them out on the [errors docs page](https://nodejs.org/api/errors.html#errors_node_js_error_codes).
 
 The previous example can be rewritten the following way:
 
