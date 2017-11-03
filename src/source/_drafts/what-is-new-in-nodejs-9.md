@@ -10,9 +10,9 @@ tags:
 
 Node.js 8.9.0 just became the LTS (Long Term Support) version of Node.js under the codename  Carbon, and it will be maintained till December 31, 2019, to align with the scheduled end-of-life of OpenSSL-1.0.2.
 
-Node.js 9 will serve as the base for the next LTS release, Node.js 10, which will become the active LTS version in October 2018.
+After that, Node.js 9 will serve as the base for the next LTS release, Node.js 10, which will become the active LTS version in October 2018. To read more on Node.js releases, read the official [Node.js Releases](https://github.com/nodejs/Release) repository.
 
-To read more on Node.js releases, read the official [Node.js Releases](https://github.com/nodejs/Release) repository.
+This article is dedicated to the new features and fixes that ship with Node.js 9, and I found most interesting and useful. Did I miss something important? Please let me know in the comments section! 😊
 
 # What's new in Node.js 9?
 
@@ -73,6 +73,8 @@ const isEq = isDeepStrictEqual({
 })
 ```
 
+> <center>*Interested in working on Node.js with me at GoDaddy? Drop me a DM on [Twitter](https://twitter.com/nthgergo)!* 🤗</center>
+
 ## Callbackify added to `util`
 
 With Node.js 8 `util.promisify` got added. However, because of compatibility reasons, there was a need for the opposite - a method that can convert Promises to an error-first, callback taking function.
@@ -95,3 +97,29 @@ callbackify(main)(function (err) {
 
 
 ## More static error codes
+
+During the summer, static error codes started to appear in the Node.js core to solve the problem of string comparisons when errors were thrown. Probably you saw a lot of error handling logic like this previously:
+
+```javascript
+if (err.message === 'Can\'t set headers after they are sent.') {
+  //do something with the error
+}
+```
+
+The problem with this approach is that even a typo fix would cause a SemVer major change. And it gets even worse when you want to fix a misleading error message. To solve the issue, the Node.js core started to assign static error messages to errors. You can check them out on the [errors docs page](https://nodejs.org/api/errors.html#errors_node_js_error_codes).
+
+The prevouis example can be rewritten the following way:
+
+```javascript
+if (err.code === 'ERR_HTTP_HEADERS_SENT') {
+  //do something with the error
+}
+```
+
+## Two-Factor Authentication for npm
+
+Node.js 9.0.0 ships with npm version 5.5.1 - which includes two-factor authentication. If you are publishing, this is a must have - even if you don't update to Node.js 9, you should update your npm version and enable two-factor authentication.
+
+## Updating to Node.js 9?
+
+Updating to odd-numbered major releases are generally not recommended for production environments, only if you'd like to test things out, as breaking changes can be added with each release, there will be no long-term support for them, and development on them will be stopped immediately once an even-numbered LTS version is cut.
