@@ -53,14 +53,25 @@ server.listen(8443)
 
 To read more on HTTP/2, check out the official [Node.js HTTP/2 documentation](https://nodejs.org/api/http2.html).
 
-## Generic `Duplex` stream support in HTTP/1
-
-https://github.com/nodejs/node/pull/16267
-
 ## Deep strict equal helper exposed in `util`
 
-https://github.com/nodejs/node/pull/16084
+The [assert]() core module had the `assert.deepStrictEqual(actual, expected[, message])` method since version 1.2.0. However, as the purpose of that function is to be used in tests, it throws if the values don't match.
+
+Since a lot of userland modules needed this functionality, the Node.js core decided to expose this function, which was already used internally by the Node.js core.
+
+To compare any values, from now on you can use the `util.isDeepStrictEqual(value1, value2)` method.
+
+```javascript
+const { isDeepStrictEqual } = require('util')
+
+const isEq = isDeepStrictEqual({
+  a: '1'
+}, {
+  a: 1
+})
+```
 
 ## Callbackify added to `util`
 
 https://github.com/nodejs/node/pull/12712
+`
