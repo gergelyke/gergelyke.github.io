@@ -184,6 +184,8 @@ main()
 
 ```
 
+However, with `try-catch` blocks you can hide important exceptions, like system errors, which you want to rethrow. To learn more about when you should rethrow, I strongly recommend to read Eran's post, [Learning to Throw Again](https://medium.com/@eranhammer/learning-to-throw-again-79b498504d28).
+
 ## More complex control flows
 
 One of the first async control flow libraries for Node.js was the one called [async](http://caolan.github.io/async/) created by [Caolan McMahon](https://twitter.com/caolan). It provides asynchronous helpers, like:
